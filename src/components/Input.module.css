@@ -1,0 +1,28 @@
+.root {
+  -webkit-appearance: none;
+  padding: 16px;
+  margin-bottom: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  outline: none;
+  font: inherit;
+  -webkit-transition: all 0.2s linear 0s;
+  -o-transition: all 0.2s linear 0s;
+  transition: all 0.2s linear 0s;
+  border: 0;
+  background: #f6f6f6;
+}
+
+.error {
+  -webkit-appearance: none;
+  padding: 16px;
+  margin-bottom: 8px;
+  border: 1px solid rgb(248, 43, 43);
+  border-radius: 5px;
+  outline: none;
+  font: inherit;
+  -webkit-transition: all 0.2s linear 0s;
+  -o-transition: all 0.2s linear 0s;
+  transition: all 0.2s linear 0s;
+  background: #f6f6f6;
+}

@@ -1,0 +1,31 @@
+.root {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  display: flex;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.social a {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 24px;
+}
+
+.instagram {
+  background-image: url("../icons/instagram.svg");
+}
+
+.facebook {
+  background-image: url("../icons/facebook.svg");
+}
+
+.twitter {
+  background-image: url("../icons/twitter.svg");
+}

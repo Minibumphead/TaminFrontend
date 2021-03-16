@@ -1,0 +1,28 @@
+.root {
+  margin-top: 16px;
+  position: relative;
+  padding: 24px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  border-color:  #5208FF;
+  box-shadow:  #5208FF 0px 0px 0px 2px inset;
+  -webkit-box-shadow:  #5208FF 0px 0px 0px 2px inset;
+}
+
+.root:hover {
+  border: 1px solid black;
+}
+
+.root::after {
+  width: 24px;
+  height: 24px;
+  background:  #5208FF;
+  color: white;
+  border-radius: 50%;
+  content: ' ';
+  background-image: url("../icons/check.svg");
+  background-size: contain;
+  position: absolute;
+  top: calc(-0.5 * 24px);
+  right: calc(-0.5 * 24px);
+}

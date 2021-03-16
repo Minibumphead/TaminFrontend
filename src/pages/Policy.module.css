@@ -1,0 +1,16 @@
+.root {
+  max-width: 450px;
+  flex-direction: column;
+  display: flex;
+  padding: 24px 0;
+}
+
+.break {
+  display: inline-block;
+  margin: 24px 0;
+}
+
+.validationErrors{
+  padding-top: 16px;
+  color:red
+}
