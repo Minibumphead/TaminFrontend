@@ -4,6 +4,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { letters, validEmailPattern } from "../services/constants"
 import styles from "./Policy.module.css";
 
 const Policy = props => {
@@ -22,15 +23,8 @@ const Policy = props => {
   const marketPrice = Math.floor(Math.random() * 200);
   const multiple = Math.floor(Math.random() * 10);
   const price = marketPrice * multiple;
-
-
-  const handleValidate = () => {
-    const letters = /^[A-Za-z]+$/;
-    // email format: localpart@domain
-    // localpart allows only alphanumeric characters as first char after that underscore (_) hyphen (-) and dot (.) are allowed.
-    //domainpart allows only alphanumeric characters and hyphen (hyphen may not be first or last char of domain)
-    const validEmailPattern =  /^[a-zA-Z0-9][^ !#$%&'*+/=?^`{|}~]+[a-zA-Z0-9]@+[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[a-z]{2,3}$/
-   
+  
+const handleValidate = () => {
     if (!firstName.match(letters)){
       setValidationErrors({msg: "First name must consist of letters only!", name: "firstName"})
       return false
@@ -40,8 +34,7 @@ const Policy = props => {
       return false
     }
     if (!email.match(validEmailPattern)){
-      console.log(email.match(validEmailPattern))
-      setValidationErrors({msg: "Please Enter a valid Email!", name: "email"})
+      setValidationErrors({msg: "Please enter a valid email address!", name: "email"})
       return false
     }
     if (phone.length !== 8) {
@@ -50,6 +43,41 @@ const Policy = props => {
     }
     return true;
   }
+
+  const handleChange = (e) => {
+
+    if (e.target.name === "firstName"){
+      setFirstName(e.target.value)
+      if (!e.target.value.match(letters)){
+        setValidationErrors({msg: "First name must consist of letters only!", name: "firstName"})
+      } else {
+        setValidationErrors({msg: '', name: ''})
+      }
+    }
+    if (e.target.name === "lastName"){
+      setLastName(e.target.value)
+      if (!e.target.value.match(letters)){
+        setValidationErrors({msg: "Last name must consist of letters only!", name: "lastName"})
+      } else {
+        setValidationErrors({msg: '', name: ''})
+      }
+    }
+    if (e.target.name === "email"){
+      setEmail(e.target.value)
+      if (!e.target.value.match(validEmailPattern)){
+        setValidationErrors({msg: "Please enter a valid email address!", name: "email"})
+      } else {
+        setValidationErrors({msg: '', name: ''})
+      }
+    }
+    if (e.target.name === "phone"){
+      setPhone(e.target.value)
+      if (e.target.value.length !== 8){
+        setValidationErrors({msg: "Your phone number must have exactly 8 digits!", name: "phone"})
+      } else {
+        setValidationErrors({msg: '', name: ''})
+      }
+  }}
 
 
   const handleStoreData = () => {
@@ -112,7 +140,7 @@ const Policy = props => {
         placeholder="First name" 
         type="text"
         value={firstName}
-        onChange={e => setFirstName(e.target.value)}
+        onChange={handleChange}
         errorname={validationErrors.name}
         name="firstName"
       />
@@ -120,7 +148,7 @@ const Policy = props => {
         placeholder="Last name" 
         type="text"
         value={lastName}
-        onChange={e => setLastName(e.target.value)}
+        onChange={handleChange}
         errorname={validationErrors.name}
         name="lastName"
       />
@@ -128,7 +156,7 @@ const Policy = props => {
         placeholder="Email address" 
         type="email"
         value={email}
-        onChange={e => setEmail(e.target.value)}
+        onChange={handleChange}
         errorname={validationErrors.name}
         name="email"
       />
@@ -136,7 +164,7 @@ const Policy = props => {
         placeholder="Phone" 
         type="phone"
         value={phone}
-        onChange={e => setPhone(e.target.value)}
+        onChange={handleChange}
         errorname={validationErrors.name}
         name="phone"
       />

@@ -18,7 +18,6 @@ const FeatureHome = () => {
   const [plateNumber, setPlateNumber] = useState("");
   const [plateCode, setPlateCode] = useState("");
   const [validationErrors, setValidationErrors] = useState({msg: "", name: ""});
-  const [styels, setStyles]
 
   const history = useHistory();
 
@@ -63,7 +62,17 @@ const FeatureHome = () => {
     })
   }
 
-
+  const handleChange = (e) => {
+    if (e.target.name === "ownerNumber"){
+          setOwnerNumber(e.target.value)
+      
+          if (e.target.name.trim().length < 8 || e.target.value.trim().length > 10) {
+            setValidationErrors({msg: "License or CR number must be 8 - 10 characters!", name: "ownerNumber"})
+          } else {
+            setValidationErrors({msg: "", name: ""})
+          }
+        }
+    }
 
   return (
     <div className={styles.root}>
@@ -73,7 +82,8 @@ const FeatureHome = () => {
         <Input 
           placeholder="License or CR number" 
           value={ownerNumber}
-          onChange={e => ownerNumber(e.target.value)}
+          onChange={handleChange}
+            
           errorname={validationErrors.name}
           name="ownerNumber"
           autoFocus

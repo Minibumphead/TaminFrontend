@@ -1,3 +1,9 @@
+export const letters = /^[A-Za-z]+$/;
+// email format: localpart@domain
+// localpart allows only alphanumeric characters as first char after that underscore (_) hyphen (-) and dot (.) are allowed.
+//domainpart allows only alphanumeric characters and hyphen (hyphen may not be first or last char of domain)
+export const validEmailPattern =  /^[a-zA-Z0-9][^ !#$%&'*+/=?^`{|}~]+[a-zA-Z0-9]@+[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[a-z]{2,3}$/ 
+
 export const plateCodes = [
   "R B",
   "R D",
