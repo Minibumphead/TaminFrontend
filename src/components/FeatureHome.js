@@ -18,7 +18,6 @@ const FeatureHome = () => {
   const [plateNumber, setPlateNumber] = useState("");
   const [plateCode, setPlateCode] = useState("");
   const [validationErrors, setValidationErrors] = useState({msg: "", name: ""});
-  const [styels, setStyles]
 
   const history = useHistory();
 
